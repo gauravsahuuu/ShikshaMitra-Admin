@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="overflow-x-hidden">
+    <nav class="flex border-2 border-solid border-black h-[80px] relative bg-[#0094fe]">
+        <div class="flex items-center">
+            <img src="../static/loginLogo.png" alt="" class="w-[90%] h-[80%] mt-1 ml-5">
+        </div>
+        
+        <div class="absolute top-1/2 transform -translate-y-1/2 flex items-center justify-center space-x-4 right-[2%] bg-red-600 h-[50%] w-[90px] rounded-lg hover:bg-[red] transition duration-300 ease-in-out">
+            <a href="{{ url_for('logout') }}" class="text-l text-white">LogOut</a>
+        </div>        
+    </nav>
+    <div class="flex justify-center m-[1rem] w-[100%] font-extrabold">
+        <h2 class="text-center">College Predictor Results</h2>
+    </div>
+    <table class="min-w-full border-separate border-spacing-0 border border-gray-300">
+        <thead class="bg-gray-50">
+            <tr>
+                <th class="px-6 py-3 border-r border-b border-gray-300 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    Name
+                </th>
+                <th class="px-6 py-3 border-r border-b border-gray-300 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    Email
+                </th>
+                <th class="px-6 py-3 border-r border-b border-gray-300 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    Mobile
+                </th>
+                <th class="px-6 py-3 border-b border-gray-300 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    Issue
+                </th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            {% for issue in issues %}
+            <tr>
+                <td class="px-6 py-4 border-r border-b border-gray-300 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {{ issue.name }}
+                </td>
+                <td class="px-6 py-4 border-r border-b border-gray-300 whitespace-nowrap text-sm text-gray-500">
+                    {{ issue.email }}
+                </td>
+                <td class="px-6 py-4 border-r border-b border-gray-300 whitespace-nowrap text-sm text-gray-500">
+                    {{ issue.mobile }}
+                </td>
+                <td class="px-6 py-4 border-b border-gray-300 whitespace-nowrap text-sm text-gray-500">
+                    {{ issue.issue }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth@0,75..100;1,75..100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coming+Soon&family=Open+Sans:wght@555&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../static/login_style.css">
+  </head>
+  <body>
+    <div class="flex w-screen min-h-screen overflow-hidden bgImage">
+      <div class="bg-[#f8f7fd] text-[#0094fe] w-[40%]">
+        <img src="../static/loginLogo.png" alt="image2" class="w-[40%] m-5 mt-8 ml-10" />
+
+        <h2 class="font-extrabold text-3xl ml-[3.6rem] open-sans">ShikshaMitra</h2>
+        
+        <form class="flex flex-col justify-center items-center w-[100%]" action="{{ url_for('login') }}" method="POST">
+          <div class="w-[80%] m-5">
+            <label for="username" class="font-semibold text-xl form-text open-sans"> Username </label>
+            <br />
+            <input
+              class="w-[100%] h-[3.2rem] border-[2px] border-solid border-[#0094fe] rounded-lg input-text text-center text-xl"
+              type="text"
+              name="username"
+              id="username"
+              required
+            />
+          </div>
+
+          <div class="w-[80%] m-5 relative">
+            <label for="password" class="font-semibold text-xl form-tex open-sanst"> Password </label>
+            <br />
+            <input
+              class="w-[100%] h-[3.2rem] border-[2px] border-solid border-[#0094fe] rounded-lg input-text text-center text-xl pr-12"
+              type="password"
+              name="password"
+              id="password"
+              required
+            />
+            <button type="button" class="absolute right-3 top-2 text-sm text-blue-500" onclick="togglePassword()">
+              Show
+            </button>
+          </div>
+
+          <div class="flex flex-col justify-center items-center w-[100%] mt-[2.5rem]">
+            <button class="m-3 w-[80%] bg-[#0094fe] text-white rounded-lg h-[3.2rem] text-lg btn" type="submit">Log in</button>
+          </div>
+
+          <p class="text text-black">
+            For demo purposes, use:
+            <br />
+            username: abc
+            <br />
+            password: 654321
+          </p>
+        </form>
+      </div>
+      <div class="absolute right-[12%] top-[10%] text-[#0094fe] font-extrabold text-2xl">
+        <h2 class="roboto-slab-yoyo">
+          Welcome to Your Technical Education Hub:
+          <p>Log In to Access Personalized Support</p>
+        </h2>
+      </div>
+    </div>
+  </body>
+  <script>
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const button = passwordInput.nextElementSibling;
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            button.textContent = 'Hide';
+        } else {
+            passwordInput.type = 'password';
+            button.textContent = 'Show';
+        }
+    }
+</script>
+</html>
